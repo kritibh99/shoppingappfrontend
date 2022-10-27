@@ -1,0 +1,29 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>
+        {{ user.firstname }}
+      </td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="deleteuser(user.id)">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

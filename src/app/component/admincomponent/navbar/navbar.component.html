@@ -1,0 +1,64 @@
+<header>
+  <div class="navbar bg-primary shadow-sm">
+    <div class="navbar-brand align-item-center d-flex">
+      <i style="font-size: 40px" class="fas fa-shipping-fast">&nbsp; </i>
+      <strong style="font-size: 30px">ApnaApp</strong>
+    </div>
+    <button class="btn btn-danger" routerLink="/products">Products</button>
+    <button
+      class="btn btn-danger"
+      routerLink="/users"
+      *ngxPermissionsOnly="['Admin']"
+    >
+      Users
+    </button>
+    <button
+      class="btn btn-danger"
+      routerLink="/admin"
+      *ngxPermissionsOnly="['Admin']"
+    >
+      Admin
+    </button>
+
+    <button routerLink="/login" class="btn btn-danger">LogOut</button>
+  </div>
+</header>
+<div>
+  <div class="card mt-4">
+    <h4 class="card-header">Home</h4>
+    <div class="card-body">
+      <p>You're logged in with Angular 10 & JWT!!</p>
+      <p>
+        Your role is: <strong>{{ user.role }}</strong
+        >.
+      </p>
+      <p>This page can be accessed by <u>all authenticated users</u>.</p>
+      <p class="mb-1">Current user from secure api end point:</p>
+
+      <ul *ngIf="user">
+        <li>{{ user.firstname }} {{ user.lastname }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- <button
+class="btn btn-danger"
+routerLink="/products"
+*ngxPermissionsOnly="['Customer']"
+>
+Products
+</button>
+<button
+class="btn btn-danger"
+routerLink="/users"
+*ngxPermissionsOnly="['Admin']"
+>
+Users
+</button>
+<button
+class="btn btn-danger"
+routerLink="/admin"
+*ngxPermissionsOnly="['Admin']"
+>
+Admin
+</button> -->

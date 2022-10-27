@@ -1,0 +1,60 @@
+<app-header></app-header>
+<ng-container>
+  <div class="container">
+    <div class="row">
+      <ng-container>
+        <div class="col-md-3" *ngFor="let category of categoryList">
+          <a (click)="filterByCategory(category.id)" href="#">
+            <img
+              style="width: 62px; margin-top: 5px"
+              src="{{ category.image }}"
+              alt=""
+            />
+
+            <h6>{{ category.title }}</h6>
+          </a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>
+
+<div class="container">
+  <div class="row">
+    <ng-container
+      (list)="onApply($event)"
+      *ngFor="let item of productList | filter: searchKey"
+    >
+      <div class="card col-md-3">
+        <img src="{{ item.image }}" alt="" />
+        <h5>
+          {{ item.title }}
+        </h5>
+        <p
+          style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          "
+        >
+          {{ item.description }}
+        </p>
+        <p><strong>Price : </strong>Rs {{ item.price }}</p>
+        <div class="content">
+          <button type="button" class="btn" (click)="inc(item)">
+            <i class="fa fa-plus"></i>
+          </button>
+          <span>{{ item.quantity }}</span>
+          <button type="button" class="btn" (click)="dec(item)">
+            <i class="fa fa-minus"></i>
+          </button>
+        </div>
+
+        <button class="btn btn-primary" (click)="addtocart(item, userid)">
+          Add to Cart
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
